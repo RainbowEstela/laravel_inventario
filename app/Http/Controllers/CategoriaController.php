@@ -12,7 +12,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('categorias.categorias');
+        $categorias = Categoria::paginate(5);
+
+        return view('categorias.categorias', ['categorias' => $categorias]);
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -28,7 +30,15 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nombre' => 'required|unique:categorias|max:255',
+        ]);
+
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->save();
+
+        return redirect()->route("categoria.view");
     }
 
     /**

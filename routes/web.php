@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,13 @@ Route::prefix('categorias')->middleware(['auth', 'verified'])->group(function ()
     Route::get('/create', [CategoriaController::class, 'create'])->name("categoria.create");
     Route::post('/store', [CategoriaController::class, 'store'])->name("categoria.store");
     Route::delete('/delete', [CategoriaController::class, 'destroy'])->name("categoria.destroy");
+});
+
+Route::prefix('localizaciones')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/view', [LocationController::class, 'index'])->name("localizaciones.view");
+    Route::get('/create', [LocationController::class, 'create'])->name("localizaciones.create");
+    Route::post('/store', [LocationController::class, 'store'])->name("localizaciones.store");
+    Route::delete('/delete', [LocationController::class, 'destroy'])->name("localizaciones.destroy");
 });
 
 require __DIR__ . '/auth.php';

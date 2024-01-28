@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Laravel torneos</title>
+    <title>Inventario</title>
 </head>
 
 <body class="font-sans antialiased">

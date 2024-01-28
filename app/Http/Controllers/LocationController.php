@@ -12,7 +12,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::paginate(5);
+        return view('locations.locations', ['locations' => $locations]);
     }
 
     /**
@@ -20,7 +21,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('locations.create');
     }
 
     /**
@@ -28,7 +29,21 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'ciudad' => 'required|max:255',
+            'edificio' => 'required|max:255',
+            'direccion' => 'required|max:255',
+            'sala' => 'required|digits_between:1,3',
+        ]);
+
+        $location = new Location();
+        $location->ciudad = $request->ciudad;
+        $location->edificio = $request->edificio;
+        $location->direccion = $request->direccion;
+        $location->sala = $request->sala;
+        $location->save();
+
+        return redirect()->route('localizaciones.view');
     }
 
     /**

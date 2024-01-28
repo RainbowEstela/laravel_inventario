@@ -1,34 +1,49 @@
 <x-layout-principal>
     <x-slot name="header">
-        Categorias
+        Localizaciones
     </x-slot>
     <x-slot name="nuevo">
-        {{ route('categoria.create')}}
+        {{ route('localizaciones.create')}}
     </x-slot>
 
-    @if (isset($categorias))
+    @if (isset($locations))
     <x-table.table>
 
         <x-slot name="thprincipal">
             <x-table.th-principal>
-                Nombre
+                Ciudad
             </x-table.th-principal>
             <x-table.th-principal>
-                Acciones
+                Edificio
+            </x-table.th-principal>
+            <x-table.th-principal>
+                Direccion
+            </x-table.th-principal>
+            <x-table.th-principal>
+                Sala
             </x-table.th-principal>
         </x-slot>
 
 
         <x-slot name="tabletr">
-            @foreach($categorias as $categoria)
+            @foreach($locations as $location)
             <x-table.tr>
-                <x-table.th-body>
-                    {{$categoria->nombre}}
-                </x-table.th-body>
+                <x-table.td>
+                    {{$location->ciudad}}
+                </x-table.td>
+                <x-table.td>
+                    {{$location->edificio}}
+                </x-table.td>
+                <x-table.td>
+                    {{$location->direccion}}
+                </x-table.td>
+                <x-table.td>
+                    {{$location->sala}}
+                </x-table.td>
                 <x-table.td>
                     <x-enlace.principal>
                         <x-slot name="link">
-                            {{ route('categoria.destroy')}}
+                            {{ route('localizaciones.destroy')}}
                         </x-slot>
 
                         <x-slot name="texto">
@@ -40,7 +55,7 @@
             @endforeach
         </x-slot>
         <x-slot name="tlinks">
-            {{$categorias->links()}}
+            {{$locations->links()}}
         </x-slot>
     </x-table.table>
     @endif
