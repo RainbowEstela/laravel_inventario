@@ -28,7 +28,7 @@
                 <x-table.td>
                     <x-enlace.principal>
                         <x-slot name="link">
-                            {{ route('categoria.destroy')}}
+                            {{ route('categoria.destroy',["id" => $categoria->id])}}
                         </x-slot>
 
                         <x-slot name="texto">

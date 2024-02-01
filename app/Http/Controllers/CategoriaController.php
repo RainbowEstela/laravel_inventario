@@ -68,8 +68,10 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+        Categoria::destroy($id);
+
+        return redirect()->route("categoria.view");
     }
 }

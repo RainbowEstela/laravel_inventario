@@ -43,7 +43,7 @@
                 <x-table.td>
                     <x-enlace.principal>
                         <x-slot name="link">
-                            {{ route('localizaciones.destroy')}}
+                            {{ route('localizaciones.destroy',["id"=>$location->id])}}
                         </x-slot>
 
                         <x-slot name="texto">
