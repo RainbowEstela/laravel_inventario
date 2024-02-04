@@ -16,6 +16,12 @@ class LocationController extends Controller
         return view('locations.locations', ['locations' => $locations]);
     }
 
+    public function assingView($id)
+    {
+        $locations = Location::paginate(5);
+        return view('locations.locations', ['locations' => $locations, "id" => $id]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -49,9 +55,11 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Location $location)
+    public function show($id)
     {
-        //
+        $location = Location::where('id', $id)->first();
+
+        return view('locations.show', ['location' => $location]);
     }
 
     /**

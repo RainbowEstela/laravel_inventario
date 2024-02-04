@@ -16,5 +16,7 @@
 
         </tbody>
     </table>
+    @if(isset($tlinks))
     {{$tlinks}}
+    @endif
 </div>

@@ -22,6 +22,9 @@
             <x-table.th-principal>
                 Sala
             </x-table.th-principal>
+            <x-table.th-principal>
+                Acciones
+            </x-table.th-principal>
         </x-slot>
 
 
@@ -41,6 +44,19 @@
                     {{$location->sala}}
                 </x-table.td>
                 <x-table.td>
+
+                    @if(request()->routeIs('localizaciones.assing'))
+                    <x-enlace.principal>
+                        <x-slot name="link">
+                            {{ route('productos.location',["idl"=>$location->id , "idp"=>$id])}}
+                        </x-slot>
+
+                        <x-slot name="texto">
+                            Asignar
+                        </x-slot>
+                    </x-enlace.principal>
+
+                    @else
                     <x-enlace.principal>
                         <x-slot name="link">
                             {{ route('localizaciones.destroy',["id"=>$location->id])}}
@@ -50,6 +66,9 @@
                             borrar
                         </x-slot>
                     </x-enlace.principal>
+                    @endif
+
+
                 </x-table.td>
             </x-table.tr>
             @endforeach

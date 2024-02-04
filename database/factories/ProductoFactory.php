@@ -24,8 +24,8 @@ class ProductoFactory extends Factory
             "imagen" => "imagen_1.png",
             "stock" => $this->faker->numberBetween(0, 200),
             "estado" => "activo",
-            "location_id" => $this->faker->numberBetween(1, 5),
-            "categoria_id" => $this->faker->numberBetween(3, 10),
+            "location_id" => $this->faker->numberBetween(1, 10),
+            "categoria_id" => $this->faker->numberBetween(1, 10),
         ];
     }
 }

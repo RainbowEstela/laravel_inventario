@@ -17,7 +17,7 @@ class CategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            "nombre" => fake()->word(),
+            "nombre" => fake()->unique()->randomElement(["PC", "movil", "consola", "belleza", "tecnologia", "ropa", "deporte", "comida", "libreta", "mueble"]),
         ];
     }
 }

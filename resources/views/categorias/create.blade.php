@@ -7,7 +7,7 @@
         {{ route('categoria.create')}}
     </x-slot>
 
-    <form method="POST" action="{{ route('categoria.store') }}">
+    <form method="POST" action="{{ route('categoria.store') }}" class="max-w-lg mx-auto">
         @csrf
 
         <!-- Name -->

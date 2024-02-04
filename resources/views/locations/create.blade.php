@@ -7,7 +7,7 @@
         {{ route('localizaciones.create')}}
     </x-slot>
 
-    <form method="POST" action="{{ route('localizaciones.store') }}">
+    <form method="POST" action="{{ route('localizaciones.store') }}" class="max-w-lg mx-auto">
         @csrf
 
         <!-- ciudad -->
