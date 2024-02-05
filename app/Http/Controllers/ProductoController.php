@@ -14,7 +14,8 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::paginate(10);
-        return view("productos.productos", ['productos' => $productos]);
+        $categorias = Categoria::all();
+        return view("productos.productos", ['productos' => $productos, 'categorias' => $categorias]);
     }
 
     /**
@@ -98,6 +99,9 @@ class ProductoController extends Controller
         return redirect()->route('productos.view');
     }
 
+    /**
+     * assigna la id de una localizacion a una id de producto muestra la vista de productos
+     */
     public function locationAssing($idl, $idp)
     {
         $producto = Producto::where('id', intval($idp))->first();
@@ -116,5 +120,53 @@ class ProductoController extends Controller
         Producto::destroy($id);
 
         return redirect()->route('productos.view');
+    }
+
+    // FUNCIONES DE FILTRADO
+
+    // FUNCIONES PARA BUSCAR Y MOSTRAR LOS PRODUCTOS POR CATEGORIA
+    public function filtrarCategoria(Request $request)
+    {
+        return redirect()->route('productos.categoria.view', ['id' => $request->categoria]);
+    }
+
+    public function vistaCategoria($id)
+    {
+        $productos = Producto::where('categoria_id', $id)->paginate(10);
+        $categorias = Categoria::all();
+
+
+        return view("productos.productos", ['productos' => $productos, 'categorias' => $categorias]);
+    }
+
+
+    // FUNCIONES PARA BUSCAR Y MOSTRAR PRODUCTOS POR NOMBRE
+    public function filtrarNombre(Request $request)
+    {
+
+        return redirect()->route('productos.nombre.view', ['nombre' => $request->modelo]);
+    }
+
+    public function vistaNombre($nombre)
+    {
+        $productos = Producto::where('modelo', 'LIKE', "%{$nombre}%")->paginate(10);
+        $categorias = Categoria::all();
+
+
+        return view("productos.productos", ['productos' => $productos, 'categorias' => $categorias]);
+    }
+
+    // FUNCIONES PARA BUSCAR Y MOSTRAR PRODUCTOS POR CATEGORIA
+    public function filtrarCod(Request $request)
+    {
+        return redirect()->route('productos.codigo.view', ['cod' => $request->codigo]);
+    }
+
+    public function viewCod($cod)
+    {
+        $productos = Producto::where('codigo', 'LIKE', "%{$cod}%")->paginate(10);
+        $categorias = Categoria::all();
+
+        return view("productos.productos", ['productos' => $productos, 'categorias' => $categorias]);
     }
 }

@@ -32,6 +32,13 @@
                     <a href="{{ $nuevo }}"><button class="bg-blue-500 rounded-lg p-2 text-blue-50">Añadir</button></a>
                 </div>
                 @endif
+                @if(isset($extras))
+                <div class="max-w-7xl mx-auto flex items-center content-center gap-4">
+
+                    {{ $extras }}
+
+                </div>
+                @endif
 
             </div>
             <div class="mx-auto sm:px-6 lg:px-8 max-w-fit">

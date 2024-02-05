@@ -5,6 +5,39 @@
     <x-slot name="nuevo">
         {{ route('productos.create')}}
     </x-slot>
+    <x-slot name="extras">
+        <x-form.input>
+            <x-slot name="ruta">
+                {{ route('productos.codigo')}}
+            </x-slot>
+            <x-slot name="dato">
+                codigo
+            </x-slot>
+
+        </x-form.input>
+        <x-form.input>
+            <x-slot name="ruta">
+                {{ route('productos.nombre')}}
+            </x-slot>
+            <x-slot name="dato">
+                modelo
+            </x-slot>
+
+        </x-form.input>
+        <x-form.select>
+            <x-slot name="ruta">
+                {{ route('productos.categoria')}}
+            </x-slot>
+            <x-slot name="dato">
+                categoria
+            </x-slot>
+            @foreach($categorias as $categoria)
+            <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+            @endforeach
+
+        </x-form.select>
+
+    </x-slot>
 
     @if (isset($productos))
     <x-table.table>

@@ -16,6 +16,9 @@ class LocationController extends Controller
         return view('locations.locations', ['locations' => $locations]);
     }
 
+    /**
+     * Muesta la vista de localizaciones con el boton para asignar a un producto
+     */
     public function assingView($id)
     {
         $locations = Location::paginate(5);
