@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\CategoriaResource;
 use App\Http\Resources\ProductoResource;
 use App\Models\Categoria;
 use App\Models\Location;
@@ -97,6 +98,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     // RUTAS CATEGORIA
-
-
+    Route::get("/categorias", function () {
+        return CategoriaResource::collection(Categoria::paginate(5));
+    });
 });
